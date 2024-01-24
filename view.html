@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile - Registered Personnel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            margin-bottom: 20px;
+        }
+
+        .profile-details label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin-right: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-container">
+    <h2 class="profile-label">Registered Personnel</h2>
+
+    <div class="profile-details">
+        <label>Name:</label> John Doe<br>
+        <label>Bay Slot:</label> A-123<br>
+        <label>Vehicle Type:</label> Sedan<br>
+        <label>Vehicle No.:</label> ABC 123<br>
+        <label>Time In:</label> 10:00 AM<br>
+        <label>Time Out:</label> 4:30 PM<br>
+    </div>
+
+    <div class="button-container">
+        <button onclick="window.print()">Print</button>
+        <button onclick="updateAccount()">Update Account</button>
+        <button onclick="addToArchive()">Add to Archive</button>
+    </div>
+</div>
+
+<script>
+    function updateAccount() {
+        // Add your update account logic here
+        alert('Update Account functionality to be implemented.');
+    }
+
+    function addToArchive() {
+        // Add your add to archive logic here
+        alert('Add to Archive functionality to be implemented.');
+    }
+</script>
+
+</body>
+</html>

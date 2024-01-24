@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+             overflow: hidden; /* Disable scrolling */
+        }
+
+        #header {
+            height: 60px;
+            background-color: #86B6F6;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        #logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #university-name {
+            font-size: 18px;
+            margin-right: auto;
+        }
+
+        #admin-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 0; /* Initially hidden */
+            position: fixed;
+            background-color: #5487ca;
+            padding-top: 20px;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+        #admin-profile {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #0066cc; /* Adjust background color as needed */
+        color: white;
+        }
+
+        #admin-profile img {
+        border-radius: 50%; /* Make the admin picture circular */
+        margin-right: 10px;
+        }
+
+        #admin-details {
+         display: flex;
+        flex-direction: column;
+        }
+
+        .status-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(55, 219, 55);
+      border-radius: 50%;
+      margin-right: 5px; 
+    }
+
+    .status-text {
+      font-size: 15px; 
+    }
+
+        #sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        #sidebar a:hover {
+            background-color: #555;
+        }
+
+
+        #content {
+            margin-left: 0px; /* Adjusted to 0 initially */
+            
+            transition: margin-left 0.5s;
+            background-color: #ffffff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+
+        #accountButtons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 250px;
+        }
+
+        #accountButtons button {
+            text-align: center;
+            padding: 10px;
+            margin: 0 10px;
+        }
+        .styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #000000;  /* Set font color to white */
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+.styled-table th {
+    background-color: #ffffff;
+}
+
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <img id="logo" src="assets/img/qcu.png" alt="Logo">
+    <div id="university-name">Quezon City University</div>
+    <div id="admin-icon" onclick="toggleSidebar()">
+        <img src="assets/img/adminpic.png" alt="Admin Icon" width="33" height="33">
+    </div>
+    
+</div>
+
+<div id="sidebar">
+    <div id="admin-profile">
+        <img src="assets/img/adminpic.png" alt="Admin Picture" width="50" height="50">
+        <div id="admin-details">
+            <div class="admin-container">
+                <div id="admin-role">Admin</div>
+            </div>
+            <div class="status-container">
+                <div class="dot"></div>
+                <div class="status-text">Online</div>
+            </div>
+        </div>
+    </div>
+
+   <a href="#dashboard">
+    <img src="assets/img/dashicon.png" alt="Dashboard Icon" width="20" height="15">
+    Dashboard
+</a><br>
+<a href="#reports">
+    <img src="assets/img/reporticon.png" alt="Report Icon" width="20" height="15">
+    Reports
+</a><br>
+<a href="#register-guard">
+    <img src="assets/img/guardicon.png" alt="Dashboard Icon" width="20" height="15">
+    Register Guard
+</a><br>
+<a href="#accounts">
+    <img src="assets/img/accicon.png" alt="Dashboard Icon" width="20" height="15">
+    Accounts
+</a><br>
+<a href="#system-logs">
+    <img src="assets/img/logicon.png" alt="Dashboard Icon" width="20" height="15">
+    System Logs
+</a><br><br><br>
+<a href="#logout">
+    <img src="assets/img/logouticon.png" alt="Dashboard Icon" width="20" height="26">
+    Log Out
+</a>
+</div>
+
+
+<div id="content">
+    <h2 style="margin-left: 10px;">Welcome to the Admin Dashboard!</h2>
+    <p style="margin-left: 10px;">This is where you can manage various aspects of the system.</p>
+</div>
+<script>
+
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.getElementById("content");
+        if (sidebar.style.width === "0px") {
+            sidebar.style.width = "250px";
+            content.style.marginLeft = "250px";
+        } else {
+            sidebar.style.width = "0";
+            content.style.marginLeft = "0";
+        }
+    }
+
+
+    function showAccountsOptions() {
+        var content = document.getElementById("content");
+        content.innerHTML = `
+            <div id="accountButtons">
+                <button onclick="showPersonnelForm()">
+                    <img src="assets/img/personnel.png" alt="Personnel Icon" width="150" height="150">
+                    <br> Personnel
+                </button>
+                <button onclick="showStudentsForm()">
+                    <img src="assets/img/student.png" alt="Student Icon" width="150" height="150">
+                    <br> Students
+                </button>
+                <button onclick="showArchivesForm()">
+                    <img src="assets/img/archives.png" alt="Archives Icon" width="150" height="150">
+                    <br> Archived Accounts
+                </button>
+            </div>
+        `;
+    }
+
+    function loadFormContent(formFileName) {
+    var content = document.getElementById("content");
+
+    fetch(formFileName)
+        .then(response => response.text())
+        .then(data => {
+            content.innerHTML = data;
+
+            // Create a script element for each script in the loaded content
+            var scripts = content.getElementsByTagName('script');
+            for (var i = 0; i < scripts.length; i++) {
+                var script = document.createElement('script');
+                script.innerHTML = scripts[i].innerHTML;
+                document.head.appendChild(script);
+            }
+        })
+        .catch(error => console.error('Error loading content:', error));
+}
+
+    function showPersonnelForm() {
+        console.log('showPersonnelForm function called');
+        loadFormContent("personnelForm.html");
+    }
+
+    function showStudentsForm() {
+        loadFormContent("studentsForm.html");
+    }
+
+    function showArchivesForm() {
+        loadFormContent("archivesForm.html");
+    }
+
+    // Add an event listener for the "Accounts" link
+    var accountsLink = document.querySelector('#sidebar a[href="#accounts"]');
+    accountsLink.addEventListener('click', showAccountsOptions);
+
+</script>
+
+
+
+</body>
+</html>

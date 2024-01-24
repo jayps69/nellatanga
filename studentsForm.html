@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Add this in the <head> section of your HTML file -->
+
+
+    <title>Account Verification</title>
+    
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: black; /* Set the font color to black */
+            overflow: hidden; /* Disable scrolling */
+        }
+
+        #students-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .icon-x {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin-left: 5px; /* Adjust the margin for spacing */
+        }
+        
+
+        .arrow-icon img {
+        width: 16px; /* Set the width of the arrow image */
+        height: 16px; /* Set the height of the arrow image */
+        }
+
+        table {
+            width: 100%;
+            max-width: 1000px; /* Set a maximum width for the table */
+            border-collapse: collapse;
+            margin-top: 1px; /* Adjust margin-top as needed */
+            color: black; /* Set the font color to black */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .hide-border td:first-child {
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        }
+
+        td:first-child {
+        text-align: right;
+        }       
+
+        .hide-border {
+        background-color: white;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        }
+
+        #verification-section {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        color: black; /* Set the font color to black */
+        padding-left: 10px;
+        padding-right: 10px;
+        }
+        
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* Updated margin for centering */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        #modalTitle {
+        text-align: center;
+        }
+
+
+
+        .group {
+        position: relative;
+        margin-bottom: 20px;
+        }
+
+        .input {
+        font-size: 16px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 200px !important;
+        border: none;
+        border-bottom: 1px solid #515151;
+        background: transparent;
+        margin-top: 2rem;
+        width: calc(100% - 10px);
+        }
+
+        .input:focus {
+        outline: none;
+        }
+
+        label {
+        color: #999;
+        font-size: 18px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        }
+
+        .input:focus ~ label, .input:valid ~ label {
+        top: -20px;
+        font-size: 14px;
+        color: #5264AE;
+        }
+
+        .bar {
+        position: relative;
+        display: block;
+        width: 200px;
+        }
+
+        .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: #5264AE;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        }
+
+        .bar:before {
+        left: 50%;
+        }
+
+        .bar:after {
+        right: 50%;
+        }
+
+        .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+        width: 50%;
+        }
+
+        .highlight {
+        position: absolute;
+        height: 60%;
+        width: 100px;
+        top: 25%;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        }
+
+        .input:focus ~ .highlight {
+        animation: inputHighlighter 0.3s ease;
+        }
+
+        @keyframes inputHighlighter {
+        from {
+        background: #5264AE;
+        }
+
+        to {
+        width: 0;
+        background: transparent;
+        }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #Userinfo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center; /* Center the grid items horizontally */
+            align-items: center; /* Center the grid items vertically */
+            text-align: center; /* Center the text within the input fields */
+            margin-left: 120px;
+        }
+
+        #Vehicleinfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px auto; /* Center the Vehicleinfo section and add some space from the top */
+        }
+
+        .modal-buttons {
+            
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: row;
+                margin-right: 300px;
+                
+            }
+
+        .modal-buttons button {
+            margin-left: 10px;
+        }
+
+        button {
+        padding: 12.5px 30px;
+        border: 0;
+        border-radius: 100px;
+        background-color: #2ba8fb;
+        color: #ffffff;
+        font-weight: Bold;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        }
+
+        button:hover {
+        background-color: #6fc5ff;
+        box-shadow: 0 0 20px #6fc5ff50;
+        transform: scale(1.1);
+        }
+
+        button:active {
+        background-color: #3d94cf;
+        transition: all 0.25s;
+        -webkit-transition: all 0.25s;
+        box-shadow: none;
+        transform: scale(0.98);
+        }
+
+
+
+
+
+ 
+    </style>
+</head>
+
+<body>
+
+    <div id="verification-section">
+        <div>
+            <p1>Students Account</p1>
+        </div>
+
+        <div>
+            <p2>Archives</p2>
+        </div>
+
+        <div>
+            <p3 id="Dayndate">Dayndate</p3>
+        </div>
+
+        <div>
+            <p4 id="Time">Time</p4>
+            <img src="assets/img/close.png"  class="icon-x">
+        </div>
+
+
+    </div>
+
+    <div id="students-section">
+        
+        <table>
+            <thead>
+                
+                <tr >
+                    <th class="hide-border"></th>
+                    <th>Name</th>
+                    <th>Bay-Slot</th>
+                    <th>Vehicle</th>
+                    <th>Vehicle No.</th>
+                    <th>Time in</th>
+                    <th>Time Out</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hide-border">
+                    <td><span class="arrow-icon"><img src="assets/img/orangearrow.png"></span></td>
+                    <td>Dela Cruz,Juan</td>
+                    <td>BAY 1-3</td>
+                    <td>Motorcycle</td>
+                    <td>xx-xxx-xxx</td>
+                    <td>9:03:53 AM</td>
+                    <td></td>
+                </tr>
+
+                <tr class="hide-border">
+                    <td><span class="arrow-icon"><img src="assets/img/orangearrow.png"></span></td>
+                    <td>Dela Cruz, Too</td>
+                    <td>BAY 1-8</td>
+                    <td>Motorcycle</td>
+                    <td>xx-xxx-xxx</td>
+                    <td>9:26:20 AM</td>
+                    <td></td>
+                </tr>
+
+                <tr class="hide-border">
+                    <td><span class="arrow-icon"><img src="assets/img/orangearrow.png"></span></td>
+                    <td>Dela Cruz, Tree</td>
+                    <td>BAY 1-9</td>
+                    <td>Motorcycle</td>
+                    <td>xx-xxx-xxx</td>
+                    <td>9:52:18 AM</td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+       
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Registered Personnel</h2>
+            <h3 id="modalSubtitle">User Information</h3>
+
+            <div id="Userinfo">
+                <div class="group">
+                    <input required="" type="text" class="input" id="Name" value="Do Do-Hee" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="Name">Name</label>
+                  </div>
+
+                  <div class="group">
+                    <input required="" type="text" class="input" id="Type" value="Personnel" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="Type">Type</label>
+                  </div>
+
+                  <div class="group">
+                    <input required="" type="text" class="input" id="Status" value="Active" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="Status">Status</label>
+                  </div>
+
+                  <div class="group">
+                    <input required="" type="text" class="input" id="Vehicles" value="Car" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="Vehicles">Vehicles</label>
+                  </div>
+
+                  <div class="group">
+                    <input required="" type="text" class="input" id="VehicleNo" value="PAK381" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="VehicleNo">Vehicle No.</label>
+                  </div>
+
+                  <div class="group">
+                    <input required="" type="text" class="input" id="Verification" value="Verified" autocomplete="off">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="Verification">Verified</label>
+                </div>
+            </div>
+
+            <h3 id="modalSubtitle">Vehicle</h3>
+                <div id="Vehicleinfo">
+                    <div class="group">
+                        <input required="" type="text" class="input" id="sample1" value="Si" autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label for="sample1">sample 1</label>
+                    </div>
+
+                    <div class="group">
+                        <input required="" type="text" class="input" id="sample2" value="Nella" autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label for="sample2">sample 2</label>
+                    </div>
+
+                    <div class="group">
+                        <input required="" type="text" class="input" id="sample3" value="ay" autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label for="sample3">sample 3</label>
+                    </div>
+
+                    <div class="group">
+                        <input required="" type="text" class="input" id="sample4" value="BOBO" autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label for="sample4">sample 4</label>
+                    </div>
+
+                </div>
+
+                <div class="modal-buttons">
+                    <button >Print</button>
+                    <button >Update Account</button>
+                    <button >Add to Archive</button>
+                </div>
+            
+            
+  
+        </div>
+    </div>
+
+    
+
+
+<script>
+        function updateClock() {
+            
+            var currentDate = new Date();
+
+            
+            var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+           
+            var dayOfWeek = daysOfWeek[currentDate.getDay()];
+            var day = currentDate.getDate();
+            var month = months[currentDate.getMonth()];
+            var year = currentDate.getFullYear();
+
+           
+            var hours = currentDate.getHours();
+            var minutes = currentDate.getMinutes();
+            var seconds = currentDate.getSeconds();
+
+            
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+
+            
+            var formattedDate = dayOfWeek + ', ' + month + ' ' + day + ', ' + year;
+            var formattedTime = hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds + ' ' + ampm;
+
+            
+            document.getElementById('Dayndate').innerText = formattedDate;
+            document.getElementById('Time').innerText = formattedTime;
+            console.log('Script executed successfully');
+        }
+
+        updateClock();
+
+        setInterval(updateClock, 1000);
+
+                
+        function openModal() {
+                   
+       
+        var modal = document.getElementById('myModal');
+        
+        
+        var modalTitle = document.getElementById('modalTitle');
+
+
+        
+        modal.style.display = 'block';
+        }
+
+    
+        var arrowIcons = document.querySelectorAll('.arrow-icon');
+        arrowIcons.forEach(function (arrowIcon) {
+            arrowIcon.addEventListener('click', openModal);
+        });
+
+    
+        var closeModalBtn = document.querySelector('.close');
+        closeModalBtn.addEventListener('click', function () {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        });
+
+        var closeImg = document.querySelector('.icon-x');
+        closeImg.addEventListener('click', function () {
+  
+
+        window.location.href = 'admin.html#accounts'
+        showAccountsOptions();
+
+        });
+</script>
+
+
+
+
+</body>
+</html>

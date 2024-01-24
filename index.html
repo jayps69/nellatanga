@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+  <title>Welcome To iPark</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+ 
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-01.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>IPark</span></h2>
+                <p class="animate__animated animate__fadeInUp">IPark:The Design and Development of Vehicle Records and Parking Management System using QR CODE Identification in Quezon City University - San Bartolome Campus  </p>
+                <a href="#login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to IPark</h2>
+                <p class="animate__animated animate__fadeInUp">IPark:The Design and Development of Vehicle Records and Parking Management System using QR CODE Identification in Quezon City University - San Bartolome Campus</p>
+                <a href="#login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to IPark</h2>
+                <p class="animate__animated animate__fadeInUp">IPark:The Design and Development of Vehicle Records and Parking Management System using QR CODE Identification in Quezon City University - San Bartolome Campus</p>
+                <a href="#login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-double-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-double-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html"><span>iPark</span></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#services">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+         <li><a class="nav-link scrollto" href="#login">Login</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i >
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+ <!-- ======= Login Section ======= -->
+<section id="login" class="login" style="background-color: #e0d7d7;"> 
+  <div class="form-box" style="margin-left: 750px;">
+      <div class="form-value">
+        <form id="loginForm" onsubmit="validateLogin(event)">
+              <h2>iPark Login</h2>
+           
+          <div class="inputbox ">
+            <input type="email" placeholder="Email" id="loginEmailInput">
+             <i class="uil uil-envelope email-icon"></i>
+          </div>
+          <div class="inputbox ">
+           <input type="password" placeholder="Password" id="loginPasswordInput">
+            <i class="uil uil-eye-slash toggle"></i>
+          </div>
+
+          
+            <div class="forgot">
+            <a href="#" onclick="openForgotPasswordModal()">Forgot Password</a>
+            </div>
+
+              <div class="submit">
+                <button type="button" onclick="validateLoginAndRedirect()">Login</button>
+                <div class="signup">
+                  <p>Don't have an account yet? <a href="#" onclick="openSignupModal()">Signup here</a></p>
+                </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</section><!-- End Login Section -->
+
+<script>
+  function validateLoginAndRedirect() {
+    // Get the values entered by the user
+    var email = document.getElementById("loginEmailInput").value;
+    var password = document.getElementById("loginPasswordInput").value;
+
+    // Set the expected email and password
+    var expectedEmail = "admin@example.com";
+    var expectedPassword = "admin1234";
+
+    // Check if both email and password are provided
+    if (email.trim() !== "" && password.trim() !== "") {
+      // Perform your login validation
+      if (email === expectedEmail && password === expectedPassword) {
+        // Successful login, redirect to admin.html
+        window.location.href = "admin.html";
+      } else {
+        // Failed login, display an error message
+        alert("Invalid email or password. Please try again.");
+      }
+    } else {
+      // Email or password is empty, display an error message
+      alert("Please enter both email and password.");
+    }
+  }
+</script>
+
+
+  
+
+
+<script>
+  // Function to open the signup modal
+  function openSignupModal() {
+    document.getElementById('signupModal').style.display = 'block';
+  }
+
+  // Function to close the signup modal
+  function closeSignupModal() {
+    document.getElementById('signupModal').style.display = 'none';
+  }
+
+  // Function to focus on the login form
+  function focusOnLoginForm() {
+    closeSignupModal(); // Close the signup modal first
+    document.getElementById('emailInput').focus(); // Assuming 'emailInput' is the ID of the email input field in the login form
+  }
+
+  // Function to validate the signup form
+  function validateSignup(event) {
+    event.preventDefault(); // Prevent the default form submission
+    // Add your signup validation logic here
+    console.log('Signup form validated');
+  }
+</script>
+
+
+
+    <!-- ======= About Us Section ======= -->
+    
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+          <p>Welcome to iPark! Your dedicated partner in efficient and secure parking solutions. At iPark:The Design and Development of Vehicle Records and Parking Management System using QR Code Identification we take pride in optimizing the parking experience for the Quezon City University San Bartolome Campus community.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="">Course Offer</a></h4>
+              <p class="description">Quezon City University College of Engineering Bachelor of Science in Electronics Engineering Bachelor of Science in Industrial Engineering College of Computer Science and Information Technology</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">History</a></h4>
+              <p class="description">In 1988, the Quezon City Council passed an ordinance to create a technical committee that conducted a series of studies on the establishment of a Quezon City Polytechnic University.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">Department</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">Branches</a></h4>
+              <p class="description">San Bartolome (Main) Campus, San Francisco Campus, Batasan Campus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- About Us Section -->
+
+   
+
+   
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>If you have any questions or concerns, we're here to help! For additional information, feel free to email us at registrar@qcu.edu.ph. We value your feedback and look forward to assisting you.</p>
+        </div>
+      </div>
+
+      <div class="container-fluid d-flex justify-content-center align-items-center">
+
+        <div class="row">
+    
+            <div class="col-lg-12 infos">
+    
+                <div class="row">
+    
+                    <div class="col-lg-6 info d-flex flex-column">
+                        <i class="bx bx-map"></i>
+                        <h4>Address</h4>
+                        <p>673 QUIRINO HIGHWAY, <br>SAN BARTOLOME, NOVALICHES</p>
+                    </div>
+                    <div class="col-lg-6 info info-bg d-flex flex-column">
+                        <i class="bx bx-phone"></i>
+                        <h4>Call Us</h4>
+                        <p>(02) 8806-3049</p>
+                    </div>
+                    <div class="col-lg-6 info info-bg d-flex flex-column">
+                        <i class="bx bx-envelope"></i>
+                        <h4>Email Us</h4>
+                        <p>registrar@qcu.edu.ph</p>
+                    </div>
+                    <div class="col-lg-6 info d-flex flex-column">
+                        <i class="bx bx-time-five"></i>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Saturday: 9AM to 5PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+            </div>
+        </div>
+    </div>
+    
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/login.js"></script>
+  
+<!-- Modal for Signup -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeSignupModal()">&times;</span>
+    <div class="form-value">
+      <form id="signupForm" onsubmit="validateSignup(event)">
+        <h2>iPark Signup</h2>
+        <div class="inputbox">
+          <input type="email" placeholder="Email Address" id="emailInput">
+          <i class="uil uil-user toggle"></i>
+        </div>
+        <div class="inputbox">
+          <input type="password" placeholder="Confirm Password" id="passwordInput">
+          <i class="uil uil-eye-slash toggle"></i>
+        </div>
+        <div class="inputbox">
+          <input type="password" placeholder="Confirm Password" id="passwordInput">
+          <i class="uil uil-eye-slash toggle"></i>
+        </div>
+        <div class="inputbox">
+          <input type="number" placeholder="Employee Number" id="number">
+          <i class="uil uil-user toggle"></i>
+        </div>
+
+        <button type="submit">Signup</button>
+        <div class="signup">
+          <p>Already have an account?<a href="#login" onclick="focusOnLoginForm()">Login here</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Styles for Signup Modal */
+  #signupModal {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Adjust the width as needed */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 500;
+  }
+
+  .modal-content {
+    position: relative;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Center the modal content */
+  .form-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Style adjustments for input boxes */
+  .inputbox {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .inputbox input {
+    width: calc(100% - 30px);
+  }
+</style>
+
+
+<div id="forgotPasswordModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForgotPasswordModal()">&times;</span>
+    <div class="form-value">
+      <form id="forgotPasswordForm" onsubmit="resetPassword(event)">
+        <h2>Forgot Password</h2>
+        <div class="inputbox">
+          <input type="email" placeholder="Enter your email" id="forgotPasswordEmailInput">
+          <i class="uil uil-envelope email-icon"></i>
+        </div>
+        <button type="submit">Reset Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Styles for Forgot Password Modal */
+  #forgotPasswordModal {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px; /* Adjust the width as needed */
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 500;
+  }
+</style>
+
+<script>
+  // Function to open the forgot password modal
+  function openForgotPasswordModal() {
+    document.getElementById('forgotPasswordModal').style.display = 'block';
+  }
+
+  // Function to close the forgot password modal
+  function closeForgotPasswordModal() {
+    document.getElementById('forgotPasswordModal').style.display = 'none';
+  }
+
+  // Function to reset the password (you can implement your logic here)
+  function resetPassword(event) {
+    event.preventDefault();
+    var email = document.getElementById("forgotPasswordEmailInput").value;
+    // Implement your logic to send a password reset email or perform other actions
+    alert("Password reset functionality not implemented in this example.");
+    closeForgotPasswordModal();
+  }
+</script>
+
+
+</body>
+</html>
